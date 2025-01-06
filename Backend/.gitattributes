@@ -1,0 +1,1 @@
+node_modules/@cyclonedx/cdxgen-plugins-bin-windows-amd64/plugins/trivy/trivy-cdxgen-windows-amd64.exe filter=lfs diff=lfs merge=lfs -text

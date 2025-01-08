@@ -50,7 +50,16 @@ const corsOptions = {
     'http://localhost:3000',
     'http://209.38.122.167:3000',
     'http://trakmoney.in:3000',
-    'https://trakmoney.in:3000'
+    'https://trakmoney.in:3000',
+    'https://trakmoney.in',
+    'https://trakmoney.in',
+    'http://209.38.122.167',
+    'http://travelnearn.com:5002',
+    'http://travelnearn.com',
+    'https://travelnearn.com'
+
+
+
   ],  // Allowed origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'],  // Allowed headers

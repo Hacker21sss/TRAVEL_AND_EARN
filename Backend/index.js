@@ -43,7 +43,23 @@ dotenv.config();
 
 
 
-app.use(cors());
+
+// Define your CORS options
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://209.38.122.167:3000',
+    'http://trakmoney.in:3000',
+    'https://trakmoney.in:3000'
+  ],  // Allowed origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Allowed headers
+  optionsSuccessStatus: 200  // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+// Apply CORS middleware with the specified options
+app.use(cors(corsOptions));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

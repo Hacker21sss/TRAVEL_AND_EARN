@@ -1,9 +1,24 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
+
+var createError = require('http-errors');
+const http = require('http');
+var express = require('express');
+var path = require('path');
+var logger = require('morgan');
+const { createServer } = require("http");
 const cors = require('cors');
+
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const app = express();
+
+
+const httpServer = createServer(app);
+
+
+
+
+
+
 const authRoutes=require('./user/router/Userrouter')  // Firebase configuration
 const profile=require('./user/router/profileroute');
 const password=require('./user/router/passwordroute');
@@ -23,15 +38,21 @@ const editprofile=require('./user/router/editprofileroute')
  const address=require('./traveller/router/addressroute')
  const map=require('./traveller/controller/mapscontroller')
  const travelt=require('./user/router/detailsroute')
- const path=require('path');
 dotenv.config();
-const app = express();
-app.use(express.json());
-// Middlewares
-app.use(morgan('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+
 app.use(cors());
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Environment variables
 const PORT = process.env.PORT || 5000;
@@ -65,6 +86,12 @@ app.use('/editp',instructiondetail,editprofile)
 app.use('/t',traveldetail,regionRouter);
 app.use('/address',addressdetail,address);
 // app.use('/available',travelleravailable)
+
+
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

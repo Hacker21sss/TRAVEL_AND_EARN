@@ -15,11 +15,11 @@ const storage = multer.diskStorage({ destination: (req, file, cb) =>
 
 // Routes for user operations
 router.post('/create', userController.createUserProfile); // Create user
-router.put('/update/:userId', userController.updateUserProfile); // Update user profile (name, email)
-// router.put('/update-picture/:userId', upload.single('profilePicture'), userController.updateProfilePicture);
-router.post('/login',userController.login) // Update profile picture
-router.get('/getall',userController.getUserProfileByPhoneNumber)
-router.post('/traveler',userController.registerAsTraveler);
-router.get('/traveler/:travellerId',userController.getTravelerDetails)
+// router.put('/update/:userId', userController.updateUserProfile); // Update user profile (name, email)
+// // router.put('/update-picture/:userId', upload.single('profilePicture'), userController.updateProfilePicture);
+// router.post('/login',userController.login) // Update profile picture
+// router.get('/getall',userController.getUserProfileByPhoneNumber)
+// router.post('/traveler',userController.registerAsTraveler);
+// router.get('/traveler/:travellerId',userController.getTravelerDetails)
 
 module.exports = router;

@@ -29,4 +29,4 @@ const travelerSchema = new mongoose.Schema({
   });
   module.exports = mongoose.model('Traveler', travelerSchema);
 
-module.exports = mongoose.model('Userprofile', userSchema);
+module.exports = mongoose.model('userprofiles', userSchema);
